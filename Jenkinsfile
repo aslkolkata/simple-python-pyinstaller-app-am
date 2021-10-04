@@ -74,7 +74,11 @@ pipeline {
                 success {
                     //This archiveArtifacts step archives the standalone executable file and exposes this file
                     //through the Jenkins interface.
-                    archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
+                    sh "mkdir -p add"
+                    sh "cp ${env.BUILD_ID}/sources/dist/add2vals add/"
+                    sh "tar -czvf add.tgz add"
+                    archiveArtifacts "add.tgz"
+                    //archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals"
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
