@@ -6,7 +6,7 @@ pipeline {
             environment {
                 //VOLUME = '$(pwd)/sources:/src'
                 //IMAGE = 'cdrx/pyinstaller-linux:python3'
-                VOLUME = '$(pwd)/sources:/app'
+                VOLUME = '$(pwd)/sources:/root/.cache'
                 IMAGE = 'pschmitt/pyinstaller:3.9@sha256:250740779789a1002717ff4a0d5b2f708e56d29e79e7711b6b7fd371287fabc2'
             }
             steps {
